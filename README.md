@@ -10,7 +10,8 @@
 
 ### To add your changes
 #### On VsCode:
-- YOU SHOULD BE ON A FEATURE BRANCH
+- Prerequisite: Your feature branch should be updated to the newest version of the dev branch
+- Prerequisite: You should current be on your feature branch
 - `git add <files>`
 - `git commit -m "... Name <name@example.com>"`
 - `git push origin feature-branch` (creating a remote version of your feature branch)
