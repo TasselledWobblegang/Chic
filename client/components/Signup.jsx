@@ -2,12 +2,17 @@ import React from 'react'
 
 const Signup= () => {
 
-    let singupHandler = () =>{
+    let singupHandler = () => {
+
+        let username =  document.querySelector('#username').value;
+        let password = document.querySelector('#password').value;
+
         const userInfo = {
-            username: '',
-            password: ''
-        }
-        fetch('localhost:3000/signup', {
+            username: username,
+            password: password
+        };
+
+        fetch('/auth/signup', {
             method: 'POST',
             headers: {
                 'Content-type' : 'Application/JSON'
@@ -18,12 +23,14 @@ const Signup= () => {
         .then((res) => {
             console.log(res)
         })
-    }
+    };
 
 return (
     <>
         <h1>Signup</h1>
         <button onClick= {singupHandler}>click here to signup</button>
+        <input id='password' placeholder='password'></input>
+        <input id='username' placeholder='username'></input>
     </>
     )
 }

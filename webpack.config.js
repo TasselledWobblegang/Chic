@@ -41,6 +41,7 @@ module.exports = {
       directory: path.resolve(__dirname),
     },
     proxy: {
+      '/**' : "http://localhost:3000"
       },
   },
   plugins: [new HtmlWebpackPlugin()],
