@@ -2,16 +2,14 @@ const express = require ('express')
 const router = express.Router()
 
 router.post('/signup', (req,res) => {
-    res.status(200).send('signup in YAR!')
-})
+    //req
+    res.status(200).json('signed up, authentically, YAR!')
+});
 
 router.post('/login', (req, res) => {
-    res.status(200).send('login in YAR!')
-})
+    res.status(200).json('logged in, authentically, YAR!')
+});
 
-router.post('/logout', (req, res) => {
-    res.status(200).send('returned to port with BOOTY!')
-})
-
+module.exports = router;
 
 
