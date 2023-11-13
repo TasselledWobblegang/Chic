@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const db = require('../models/ChicModel');
+
 // MULTER:
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
@@ -35,6 +37,16 @@ router.post('/upload', upload.single('image'), async (req, res) => {
 
   const description = req.body.description; // description data of form input
   console.log('image description: ', description);
+
+  const SSID = req.body.SSID;
+  console.log('THIS IS USER ID: ', SSID);
+
+  // SAVE IN SQL
+  const values = [description, result.Key, SSID];
+  let saveImageQuery =
+    'INSERT INTO outfits (description, aws_image, user_id) VALUES ($1, $2, $3)';
+
+  const resultQuery = await db.query(saveImageQuery, values);
 
   res.send({ imagePath: `outfits/uploads/${result.Key}`, description });
 });

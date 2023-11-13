@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 // AXIOS: REQUESTS TO SERVER
 import axios from 'axios';
 
-const UploadOutfit = () => {
+const UploadOutfit = ({ SSID }) => {
   // STATE: IMAGE
   const [file, setFile] = useState(undefined);
   const [description, setDescription] = useState('');
@@ -13,10 +13,11 @@ const UploadOutfit = () => {
   const [imageDescription, setImageDescription] = useState('');
 
   // SEND IMAGE AS FORM DATA
-  async function postImage({ image, description }) {
+  async function postImage({ image, description, SSID }) {
     const formData = new FormData();
     formData.append('image', image);
     formData.append('description', description);
+    formData.append('SSID', SSID);
 
     const result = await axios.post('/outfits/upload', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
@@ -28,7 +29,7 @@ const UploadOutfit = () => {
   // SUBMIT IMAGE BUTTON
   const submitImage = async (e) => {
     e.preventDefault();
-    const result = await postImage({ image: file, description });
+    const result = await postImage({ image: file, description, SSID });
     console.log('Result after submiting image: ', result);
 
     // setImages([result.image, ...images]);
