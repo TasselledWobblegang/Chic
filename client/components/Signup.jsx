@@ -1,4 +1,6 @@
 import React from 'react'
+import styles from '../styles/login.css'
+import { Link } from 'react-router-dom';
 
 const Signup= () => {
 
@@ -27,10 +29,15 @@ const Signup= () => {
 
 return (
     <>
-        <h1>Signup</h1>
-        <button onClick= {singupHandler}>click here to signup</button>
-        <input id='password' placeholder='password'></input>
-        <input id='username' placeholder='username'></input>
+    <div id='loginBox'>
+        <img id='logo' src='https://www.wrkmode.com/images/id/logo_chic.gif'></img>
+        <input id='loginUsername' placeholder='username'></input>
+        <input id='loginPassword' placeholder='password'></input>
+        <button id='loginButton' onClick= {singupHandler}>click here to signup</button>
+        <Link id='signupLink' to='/login' style= {{margin : 10}}>
+            Click here to login
+        </Link>
+    </div>
     </>
     )
 }
