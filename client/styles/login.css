@@ -17,29 +17,50 @@
 }
 
 #loginPassword{
+    padding-left: 10px;
     margin: 10px;
+    border: none;
+    height: 5vh;
+    width: 25vw;
     background: rgb(0, 224, 213);
     border-radius: 5px;
 }
 
 #loginUsername{
+    padding-left: 10px;
     margin: 10px;
+    border: none;
+    height: 5vh;
+    width: 25vw;
     background: rgb(0, 224, 213);
     border-radius: 5px;
 }
 
 #loginButton{
     margin: 10px;
+    height: 5vh;
+    width: 25vw;
     background: rgb(224, 78, 0);
     border-radius: 5px;
+    border: none;
+    cursor: pointer;
+
+    
+}
+#loginButton:hover{
+    background:rgba(224, 78, 0, 0.857)
+}
+#signupLink {
+    color: rgb(0, 224, 213);
+    text-decoration: none;
+}
+#signupLink:hover{
+    color:rgba(0, 157, 224, 0.777);
 }
 
-#signupLink{
-
-}
 
 #logo{
-    height: 400px;
-    width: 450px
+    height: 40%;
+    width: 40%;
 
 }

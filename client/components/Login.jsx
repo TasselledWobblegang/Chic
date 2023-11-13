@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../styles/login.css'
+import  '../styles/login.css'
 import { Link, useNavigate } from 'react-router-dom';
 
 
@@ -43,8 +43,8 @@ return (
             <img id='logo' src='https://www.wrkmode.com/images/id/logo_chic.gif'></img>
             <input id='loginUsername' placeholder='username'></input>
             <input id='loginPassword' placeholder='password'></input>
-            <button id='loginButton'onClick= {loginHandler}>click here to Login</button>
-            <Link id='signupLink' to='/signup' style= {{margin : 10}}>
+            <button id='loginButton'onClick= {loginHandler}>Login</button>
+            <Link id='signupLink' to='/signup'>
             Click here to Signup
             </Link>
         </div>
