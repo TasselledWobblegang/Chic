@@ -60,49 +60,63 @@ const UploadOutfit = ({ SSID }) => {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            width: '50vw',
+            width: '30vw',
             margin: 'auto',
             alignItems: 'center',
             justifyContent: 'space-evenly',
             border: 'solid 2px black',
-            height: '30vh',
+            borderRadius: '10px',
+            height: '20vh',
           }}
           onSubmit={submitImage}
         >
           <input onChange={fileSelected} type="file" accept="image/*" />
           <input
-            style={{ height: '25px', width: '80%', paddingLeft: '10px' }}
+            style={{
+              height: '35px',
+              width: '80%',
+              paddingLeft: '10px',
+              borderRadius: '10px',
+              border: 'none',
+            }}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             type="text"
             placeholder="description..."
           />
           <input
-            style={{ height: '40px', width: '200px' }}
+            style={{
+              height: '40px',
+              width: '200px',
+              borderRadius: '10px',
+              border: 'none',
+            }}
             type="submit"
             value={'Upload Image'}
           />
         </form>
 
-        <div
-          className="yourUpload"
-          style={{
-            border: 'solid 1px black',
-            padding: '10px',
-            marginTop: '20px',
-            width: '600px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <img
-            style={{ width: '300px', height: '300px' }}
-            src={imagePath}
-            alt="this was the uploaded picture"
-          />
-          <p>{imageDescription}</p>
-        </div>
+        {imagePath && (
+          <div
+            className="yourUpload"
+            style={{
+              border: 'solid 1px black',
+              padding: '10px',
+              marginTop: '20px',
+              width: '600px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <img
+              style={{ width: '300px', height: '300px' }}
+              src={imagePath}
+              alt="this was the uploaded picture"
+            />
+            <p>{imageDescription}</p>
+          </div>
+        )}
       </div>
     </>
   );
