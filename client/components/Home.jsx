@@ -65,6 +65,12 @@ const Home = () => {
           value={'Upload Image'}
         />
       </form>
+
+      <img
+        style={{ width: '300px', height: '300px' }}
+        src="/images/85323658af2d5204e2fe8654c942af43"
+        alt=""
+      />
     </>
   );
 };

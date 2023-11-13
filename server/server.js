@@ -6,6 +6,14 @@ const PORT = 3000;
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 
+// UNLINK FILES TO SERVER /UPLOADS
+const fs = require('fs');
+const util = require('util');
+const unlinkFile = util.promisify(fs.unlink);
+
+// IMPORT: UPLOAD FILE FUNCTION
+const { uploadFile, getFileStream } = require('./s3.js');
+
 const app = express();
 app.use(express.json());
 
@@ -16,16 +24,30 @@ app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
 app.use('/auth', authRouter);
 
+// TEST: GET IMAGE
+app.get('/images/:key', (req, res) => {
+  const key = req.params.key;
+  const readStream = getFileStream(key);
+
+  readStream.pipe(res);
+});
+
 // TEST: POSTING IMAGES
-app.post('/images', upload.single('image'), (req, res) => {
-  // data of image file
-  const file = req.file;
+app.post('/images', upload.single('image'), async (req, res) => {
+  const file = req.file; // data of image file
   console.log('file info: ', file);
-  // description data of form input
-  const description = req.body.description;
+
+  // send image file from client to s3
+  const result = await uploadFile(file);
+  console.log('result of sending file to s3: ', result);
+  await unlinkFile(file.path);
+
+  // We get an object with a property Location whick is a link, that we can use as the src to render the image to the client
+
+  const description = req.body.description; // description data of form input
   console.log('image description: ', description);
 
-  res.send('sent an image! 🔥');
+  res.send({ imagePath: `images/${result.Key}` });
 });
 
 app.get('/*', (req, res) => {
