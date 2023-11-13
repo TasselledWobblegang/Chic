@@ -36,7 +36,7 @@ router.post('/upload', upload.single('image'), async (req, res) => {
   const description = req.body.description; // description data of form input
   console.log('image description: ', description);
 
-  res.send({ imagePath: `outfits/upload/${result.Key}`, description });
+  res.send({ imagePath: `uploads/${result.Key}`, description });
 });
 
 module.exports = router;

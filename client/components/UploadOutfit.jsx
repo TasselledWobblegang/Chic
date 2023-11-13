@@ -31,9 +31,8 @@ const UploadOutfit = () => {
     const result = await postImage({ image: file, description });
     console.log('Result after submiting image: ', result);
 
-    setImagePath(result.imagePath);
-
     // setImages([result.image, ...images]);
+    setImagePath(result.imagePath);
     setImageDescription(result.description);
   };
 
@@ -98,8 +97,8 @@ const UploadOutfit = () => {
         >
           <img
             style={{ width: '300px', height: '300px' }}
-            src={'2d13d4987bf77f02ea051c3d74aa67eb'}
-            alt=""
+            src={imagePath}
+            alt="this was the uploaded picture"
           />
           <p>{imageDescription}</p>
         </div>
