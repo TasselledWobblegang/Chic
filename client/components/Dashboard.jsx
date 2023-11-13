@@ -5,7 +5,7 @@ const Dashboard = ({ SSID }) => {
   return (
     <div>
       <h2>Welcome to the Dashboard</h2>
-      <UploadOutfit />
+      <UploadOutfit SSID={SSID} />
     </div>
   );
 };
