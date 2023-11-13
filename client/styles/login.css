@@ -1,0 +1,45 @@
+#login{
+    display: flex;
+    justify-content: center;
+}
+
+#loginBox{
+    margin : auto;
+    text-align: center;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    background: black
+}
+
+#loginPassword{
+    margin: 10px;
+    background: rgb(0, 224, 213);
+    border-radius: 5px;
+}
+
+#loginUsername{
+    margin: 10px;
+    background: rgb(0, 224, 213);
+    border-radius: 5px;
+}
+
+#loginButton{
+    margin: 10px;
+    background: rgb(224, 78, 0);
+    border-radius: 5px;
+}
+
+#signupLink{
+
+}
+
+#logo{
+    height: 400px;
+    width: 450px
+
+}
