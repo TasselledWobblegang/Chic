@@ -2,6 +2,10 @@ const express = require('express');
 const path = require('path');
 const PORT = 3000;
 
+// TESTING MULTER:
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
 const app = express();
 app.use(express.json());
 
@@ -13,7 +17,7 @@ app.use('/dist', express.static(path.join(__dirname, '../dist')));
 app.use('/auth', authRouter);
 
 // TEST: POSTING IMAGES
-app.post('/images', (req, res) => {
+app.post('/images', upload.single('image'), (req, res) => {
   res.send('sent an image! 🔥');
 });
 
