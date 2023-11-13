@@ -23,6 +23,14 @@ router.get('/uploads/:key', (req, res) => {
   readStream.pipe(res);
 });
 
+router.post('/alloutfits', async(req, res) => {
+  const userid = req.body.SSID;
+  const query = 'SELECT aws_image, description FROM outfits WHERE user_id = $1';
+  const result = await db.query(query, [userid])
+  console.log('result from alloutfits in router', result)
+  res.status(200).json(result)
+})
+
 // UPLOAD OUTFIT
 router.post('/upload', upload.single('image'), async (req, res) => {
   const file = req.file; // data of image file

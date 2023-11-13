@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Signup from './components/Signup.jsx';
 import Login from './components/Login.jsx';
 import Dashboard from './components/Dashboard.jsx';
+import AllOutfits from './components/AllOutfits.jsx';
 
 const App = () => {
   const [SSID, setSSID] = useState('');
@@ -20,13 +21,17 @@ const App = () => {
       <Link to="/login" style={{ margin: 10 }}>
         Login
       </Link>
-      <Link to="/dashboard" SSID={SSID} style={{ margin: 10 }}>
+      <Link to="/dashboard" style={{ margin: 10 }}>
         Dashboard
+      </Link>
+      <Link to="/alloutfits" style={{ margin: 10 }}>
+        All Outfits
       </Link>
       <Routes>
         <Route path="/" element={<Login setSSID={setSSID} />} />
         <Route path="/signup" element={<Signup setSSID={setSSID} />} />
         <Route path="/dashboard" element={<Dashboard SSID={SSID} />} />
+        <Route path="/alloutfits" element={<AllOutfits SSID={SSID} />} />
       </Routes>
     </Router>
   );
