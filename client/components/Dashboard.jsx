@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
+import UploadOutfit from './UploadOutfit.jsx';
 
-const Dashboard = () => {
-    return(
-        <>
-        Welcome to the Dashboard
-        </>
-    )
-}
-export default Dashboard
+const Dashboard = ({ SSID }) => {
+  return (
+    <div>
+      <h2>Welcome to the Dashboard</h2>
+      <UploadOutfit />
+    </div>
+  );
+};
+export default Dashboard;

@@ -7,7 +7,7 @@ const UploadOutfit = () => {
   // STATE: IMAGE
   const [file, setFile] = useState(undefined);
   const [description, setDescription] = useState('');
-  // const [images, setImages] = useState([]);
+  const [images, setImages] = useState([]);
 
   const [imagePath, setImagePath] = useState('');
   const [imageDescription, setImageDescription] = useState('');
