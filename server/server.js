@@ -18,6 +18,13 @@ app.use('/auth', authRouter);
 
 // TEST: POSTING IMAGES
 app.post('/images', upload.single('image'), (req, res) => {
+  // data of image file
+  const file = req.file;
+  console.log('file info: ', file);
+  // description data of form input
+  const description = req.body.description;
+  console.log('image description: ', description);
+
   res.send('sent an image! 🔥');
 });
 

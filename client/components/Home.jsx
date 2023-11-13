@@ -25,6 +25,7 @@ const Home = () => {
     e.preventDefault();
     const result = await postImage({ image: file, description });
     setImages([result.image, ...images]);
+    setDescription('');
   };
 
   const fileSelected = (e) => {
