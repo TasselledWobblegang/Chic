@@ -14,7 +14,7 @@ const unlinkFile = util.promisify(fs.unlink);
 const { uploadFile, getFileStream } = require('../s3.js');
 
 // GET OUTFIT
-router.get('/:key', (req, res) => {
+router.get('/uploads/:key', (req, res) => {
   const key = req.params.key;
   const readStream = getFileStream(key);
 
@@ -36,7 +36,7 @@ router.post('/upload', upload.single('image'), async (req, res) => {
   const description = req.body.description; // description data of form input
   console.log('image description: ', description);
 
-  res.send({ imagePath: `uploads/${result.Key}`, description });
+  res.send({ imagePath: `outfits/uploads/${result.Key}`, description });
 });
 
 module.exports = router;
