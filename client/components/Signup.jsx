@@ -42,8 +42,8 @@ return (
         <img id='logo' src='https://www.wrkmode.com/images/id/logo_chic.gif'></img>
         <input id='loginUsername' placeholder='username'></input>
         <input id='loginPassword' placeholder='password'></input>
-        <button id='loginButton' onClick= {singupHandler}>click here to signup</button>
-        <Link id='signupLink' to='/login' style= {{margin : 10}}>
+        <button id='loginButton' onClick= {singupHandler}>Sign Up</button>
+        <Link id='signupLink' to='/dashboard' style= {{margin : 10}}>
             Click here to login
         </Link>
     </div>
