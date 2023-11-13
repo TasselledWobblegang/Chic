@@ -1,8 +1,10 @@
 import React from 'react'
 import styles from '../styles/login.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Signup= ({ setSSID }) => {
+
+    const navigator = useNavigate()
 
     let singupHandler = () => {
 
@@ -23,7 +25,13 @@ const Signup= ({ setSSID }) => {
         })
         .then((res) => res.json())
         .then((res) => {
-            setSSID(res)
+            if(res.err){
+                alert(res.err)
+             }
+             else{
+             setSSID(res)
+             navigator('/dashboard')
+             }
         })
         .catch(err => console.log('error from fetch:', err));
     };

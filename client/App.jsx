@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Routes , Route, Link} from 'react-router-dom';
-import Home from './components/Home.jsx';
 import Signup from './components/Signup.jsx';
 import Login from './components/Login.jsx';
 import Dashboard from './components/Dashboard.jsx';
@@ -26,8 +25,7 @@ const App = () => {
         Dashboard
       </Link>
       <Routes>
-      <Route path='/' element={<Home/>} />
-      <Route path='/login' element={<Login setSSID={setSSID}/>} />
+      <Route path='/' element={<Login setSSID={setSSID}/>} />
       <Route path='/signup' element={<Signup setSSID={setSSID} />} />
       <Route path='/dashboard' element = {<Dashboard/>} />
       </Routes>

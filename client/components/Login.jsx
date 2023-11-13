@@ -1,9 +1,12 @@
 import React from 'react'
 import styles from '../styles/login.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 
 const Login = ( {setSSID} ) => {
+
+    const navigator = useNavigate()
 
     let loginHandler = () => {
 
@@ -24,8 +27,13 @@ const Login = ( {setSSID} ) => {
         })
         .then((res) => res.json())
         .then((res) => {
-            console.log(res)
+            if(res.err){
+               alert(res.err)
+            }
+            else{
             setSSID(res)
+            navigator('/dashboard')
+            }
         })
     };
 
