@@ -2,12 +2,12 @@ import React from 'react'
 import styles from '../styles/login.css'
 import { Link } from 'react-router-dom';
 
-const Signup= () => {
+const Signup= ({ setSSID }) => {
 
     let singupHandler = () => {
 
-        let username =  document.querySelector('#username').value;
-        let password = document.querySelector('#password').value;
+        let username =  document.querySelector('#loginUsername').value;
+        let password = document.querySelector('#loginPassword').value;
 
         const userInfo = {
             username: username,
@@ -23,8 +23,9 @@ const Signup= () => {
         })
         .then((res) => res.json())
         .then((res) => {
-            console.log(res)
+            setSSID(res)
         })
+        .catch(err => console.log('error from fetch:', err));
     };
 
 return (
