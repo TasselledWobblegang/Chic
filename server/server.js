@@ -11,7 +11,7 @@ const fs = require('fs');
 const util = require('util');
 const unlinkFile = util.promisify(fs.unlink);
 
-// IMPORT: UPLOAD FILE FUNCTION
+// S3 FUNCTIONS: UPLOAD FILE & GET FILE
 const { uploadFile, getFileStream } = require('./s3.js');
 
 const app = express();
@@ -21,7 +21,6 @@ const authRouter = require('./routes/auth.js');
 
 // statically serve everything in the build folder on the route '/build'
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
-
 app.use('/auth', authRouter);
 
 // TEST: GET IMAGE
