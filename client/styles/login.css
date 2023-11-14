@@ -1,0 +1,66 @@
+#login{
+    display: flex;
+    justify-content: center;
+}
+
+#loginBox{
+    margin : auto;
+    text-align: center;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    background: black
+}
+
+#loginPassword{
+    padding-left: 10px;
+    margin: 10px;
+    border: none;
+    height: 5vh;
+    width: 25vw;
+    background: rgb(0, 224, 213);
+    border-radius: 5px;
+}
+
+#loginUsername{
+    padding-left: 10px;
+    margin: 10px;
+    border: none;
+    height: 5vh;
+    width: 25vw;
+    background: rgb(0, 224, 213);
+    border-radius: 5px;
+}
+
+#loginButton{
+    margin: 10px;
+    height: 5vh;
+    width: 25vw;
+    background: rgb(224, 78, 0);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+
+    
+}
+#loginButton:hover{
+    background:rgba(224, 78, 0, 0.857)
+}
+#signupLink {
+    color: rgb(0, 224, 213);
+    text-decoration: none;
+}
+#signupLink:hover{
+    color:rgba(0, 157, 224, 0.777);
+}
+
+
+#logo{
+    height: 40%;
+    width: 40%;
+
+}
