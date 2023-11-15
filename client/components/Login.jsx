@@ -44,7 +44,7 @@ return (
             <input id='loginUsername' placeholder='username'></input>
             <input id='loginPassword' placeholder='password'></input>
             <button id='loginButton'onClick= {loginHandler}>Login</button>
-            <Link id='signupLink' to='/signup'>
+            <Link id='userLink' to='/signup'>
             Click here to Signup
             </Link>
         </div>

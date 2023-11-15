@@ -43,7 +43,7 @@ return (
         <input id='loginUsername' placeholder='username'></input>
         <input id='loginPassword' placeholder='password'></input>
         <button id='loginButton' onClick= {singupHandler}>Sign Up</button>
-        <Link id='signupLink' to='/dashboard' style= {{margin : 10}}>
+        <Link id='userLink' to='/login' style= {{margin : 10}}>
             Click here to login
         </Link>
     </div>
