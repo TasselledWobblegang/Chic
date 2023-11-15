@@ -25,6 +25,8 @@ const App = () => {
         All Outfits
       </Link>
       <Routes>
+      {/** Look into why they have the setSSID to SetSSID 
+          Potentially is prop drilling this function down*/}
         <Route path="/" element={<Login setSSID={setSSID} />} />
         <Route path="/signup" element={<Signup setSSID={setSSID} />} />
         <Route path="/login" element={<Login setSSID={setSSID} />} />
