@@ -2,8 +2,6 @@ import React from 'react'
 import  '../styles/login.css'
 import { Link, useNavigate } from 'react-router-dom';
 
-
-
 const Login = ( {setSSID} ) => {
 
     const navigator = useNavigate()
@@ -44,7 +42,7 @@ return (
             <input id='loginUsername' placeholder='username'></input>
             <input id='loginPassword' placeholder='password'></input>
             <button id='loginButton'onClick= {loginHandler}>Login</button>
-            <Link id='signupLink' to='/signup'>
+            <Link id='userLink' to='/signup'>
             Click here to Signup
             </Link>
         </div>

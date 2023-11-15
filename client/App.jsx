@@ -12,9 +12,6 @@ const App = () => {
   console.log('this is SSID', SSID);
   return (
     <Router>
-      <Link to="/" style={{ margin: 10 }}>
-        Home
-      </Link>
       <Link to="/signup" style={{ margin: 10 }}>
         Signup
       </Link>
@@ -28,8 +25,11 @@ const App = () => {
         All Outfits
       </Link>
       <Routes>
+      {/** Look into why they have the setSSID to SetSSID 
+          Potentially is prop drilling this function down*/}
         <Route path="/" element={<Login setSSID={setSSID} />} />
         <Route path="/signup" element={<Signup setSSID={setSSID} />} />
+        <Route path="/login" element={<Login setSSID={setSSID} />} />
         <Route path="/dashboard" element={<Dashboard SSID={SSID} />} />
         <Route path="/alloutfits" element={<AllOutfits SSID={SSID} />} />
       </Routes>

@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 // AXIOS: REQUESTS TO SERVER
 import axios from 'axios';
 
+//were going to have to add the form input for the tags here 
+//were going to have to look into the Axios what its doing here 
+
+
 const UploadOutfit = ({ SSID }) => {
   // STATE: IMAGE
   const [file, setFile] = useState(undefined);
@@ -27,8 +31,8 @@ const UploadOutfit = ({ SSID }) => {
     formData.append('description', description);
     formData.append('SSID', SSID);
     formData.append('casual', categories.casual);
-    formData.append('smart-casual', categories.smartCasual);
-    formData.append('business-attire', categories.businessAttire);
+    formData.append('smart_casual', categories.smartCasual);
+    formData.append('business_attire', categories.businessAttire);
     formData.append('formal', categories.formal);
     formData.append('athleisure', categories.athleisure);
 

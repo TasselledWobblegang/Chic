@@ -25,7 +25,23 @@ router.get('/uploads/:key', (req, res) => {
 
 router.post('/alloutfits', async(req, res) => {
   const userid = req.body.SSID;
-  const query = 'SELECT aws_image, description FROM outfits WHERE user_id = $1';
+  const catagories = req.body.catagories;
+  let query = 'SELECT aws_image, description FROM outfits WHERE user_id = $1';
+  if (catagories.includes(casual)){
+    query.concat(' casual = true')
+  }
+  if (catagories.includes(smartCasual)){
+    query.concat(' smart_casual = true')
+  }
+  if (catagories.includes(businessAttire)){
+    query.concat(' business_attire = true')
+  }
+  if (catagories.includes(formal)){
+    query.concat(' formal = true')
+  }
+  if (catagories.includes(athleisure)){
+    query.concat(' athleisure = true')
+  }
   const result = await db.query(query, [userid])
   console.log('result from alloutfits in router', result)
   res.status(200).json(result)
@@ -42,7 +58,6 @@ router.post('/upload', upload.single('image'), async (req, res) => {
   await unlinkFile(file.path);
 
   // We get an object with a property Location whick is a link, that we can use as the src to render the image to the client
-
   const description = req.body.description; // description data of form input
   console.log('image description: ', description);
 
