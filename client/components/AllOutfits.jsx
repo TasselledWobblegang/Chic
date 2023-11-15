@@ -34,6 +34,7 @@ const AllOutfits = ({ SSID }) => {
   console.log('outfitImage:', outfitImage);
   console.log('outfitDes:', outfitDes);
 
+  // get the image and description data, as well as the category information from the server!
   const array = [];
   for (let i = 0; i < outfitImage.length; i++) {
     array.push(
