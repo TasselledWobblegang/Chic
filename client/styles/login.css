@@ -50,11 +50,11 @@
 #loginButton:hover{
     background:rgba(224, 78, 0, 0.857)
 }
-#signupLink {
+#userLink {
     color: rgb(0, 224, 213);
     text-decoration: none;
 }
-#signupLink:hover{
+#userLink:hover{
     color:rgba(0, 157, 224, 0.777);
 }
 

@@ -2,6 +2,11 @@ import React from 'react'
 import styles from '../styles/login.css'
 import { Link, useNavigate } from 'react-router-dom';
 
+//Look into what useNavigate does in react router
+//useNavigator seems like its making a redirection
+
+// On line 49 fix that route the to sends to the wrong location
+
 const Signup= ({ setSSID }) => {
 
     const navigator = useNavigate()
@@ -43,7 +48,7 @@ return (
         <input id='loginUsername' placeholder='username'></input>
         <input id='loginPassword' placeholder='password'></input>
         <button id='loginButton' onClick= {singupHandler}>Sign Up</button>
-        <Link id='signupLink' to='/dashboard' style= {{margin : 10}}>
+        <Link id='userLink' to='/login' style= {{margin : 10}}>
             Click here to login
         </Link>
     </div>
