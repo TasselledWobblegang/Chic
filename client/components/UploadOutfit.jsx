@@ -172,7 +172,7 @@ const UploadOutfit = ({ SSID }) => {
             </div>
           </div>
 
-          <input className='uploadButton' type="submit" value={'UPLOAD IMAGE'}
+          <input className='outfitsButton' type="submit" value={'UPLOAD IMAGE'}
           />
         </form>
 

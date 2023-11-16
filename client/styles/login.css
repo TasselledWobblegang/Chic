@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100&display=swap');
 
+* {
+    font-family: Barlow;
+  }
+
 #login{
     display: flex;
     justify-content: center;
@@ -13,16 +17,17 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-    margin: 10px;
     border: 2px solid black;
     border-radius: 10px;
     height: 90vh;
+    width: 170vh;
+    margin-top: 5px;
 }
 
 /* was login  */
 .input{
     font-size: 30px;
-    font-family: Barlow;
+    /* font-family: Barlow; */
     letter-spacing: 2px;
     text-align: center;
     margin: 10px;
@@ -34,7 +39,7 @@
  /* was LoginButton */
 #signupLoginButton{
     font-size: 20px;
-    font-family: Barlow;
+    /* font-family: Barlow; */
     letter-spacing: 2px;
     margin-top: 60px;
     margin-bottom: 10px;
@@ -56,16 +61,14 @@
 }
 #userLink {
     font-size: 20px;
-    font-family: Barlow;
     letter-spacing: 2px;
     margin: 10px;
-    color: grey;
+    color: black;
     text-decoration: none;
-
 }
 #userLink:hover{
     font-style: italic;
-    color: black;
+    color: grey;
 }
 
 

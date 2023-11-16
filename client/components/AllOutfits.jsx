@@ -33,9 +33,9 @@ const AllOutfits = ({ SSID }) => {
           console.error('Error fetching initial data:', error);
         });
     };
-  
+
     fetchData();
-  }, []);  
+  }, []);
 
   // update array that stores outfit data when data changes 
   useEffect(() => {
@@ -92,10 +92,11 @@ const AllOutfits = ({ SSID }) => {
 
   return (
     <div className="outfitsContainer">
-      <h2>Categories</h2>
-      <form onSubmit = {handleSubmit}>
+      <h2 className='header'>CATEGORIES</h2>
+      <form className='allOutfitsForm'onSubmit={handleSubmit}>
+        <div className='checkboxDiv'>
           <div>
-            <input 
+            <input
               type="checkbox"
               id="casual"
               value="casual"
@@ -107,7 +108,7 @@ const AllOutfits = ({ SSID }) => {
           </div>
 
           <div>
-            <input 
+            <input
               type="checkbox"
               id="smartCasual"
               value="smartCasual"
@@ -119,7 +120,7 @@ const AllOutfits = ({ SSID }) => {
           </div>
 
           <div>
-            <input 
+            <input
               type="checkbox"
               id="businessAttire"
               value="businessAttire"
@@ -131,7 +132,7 @@ const AllOutfits = ({ SSID }) => {
           </div>
 
           <div>
-            <input 
+            <input
               type="checkbox"
               id="formal"
               value="formal"
@@ -143,7 +144,7 @@ const AllOutfits = ({ SSID }) => {
           </div>
 
           <div>
-            <input 
+            <input
               type="checkbox"
               id="athleisure"
               value="athleisure"
@@ -153,7 +154,8 @@ const AllOutfits = ({ SSID }) => {
             />
             <label htmlFor="athleisure">Athleisure</label>
           </div>
-          <button type="submit">Get Results</button>
+        </div>
+        <button className='outfitsButton'  type="submit">GET RESULTS</button>
       </form>
       <div id="outfitBox">{allOutfits ? outfitsArray:randomOutift}</div>
       <button onClick={getRandomOutift}>DONT KNOW WHAT TO WEAR CLICK HERE</button>
