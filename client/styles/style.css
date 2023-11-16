@@ -3,11 +3,15 @@
 /* DM Serif  */
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap');
 
+* {
+  font-family: Barlow;
+}
+
 #root {
   margin: 5px;
-  /* background: rgb(224, 78, 0); */
-  text-decoration: none;
+  /* text-decoration: none; */
   display: flex;
+  align-items: center;
   flex-direction: column;
 
 }
@@ -27,10 +31,8 @@ body {
 
 #link {
   font-size: 25px;
-  font-family: Barlow;
   letter-spacing: 2px;
-  text-decoration: none;
-  /* removes underline */
+  text-decoration: none; 
   color: black;
 }
 
@@ -39,13 +41,40 @@ body {
   font-weight: bold;
 }
 
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
 
-#chic {
+.logo:hover {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.chicText {
   font-size: 160px;
   font-family: 'DM Serif Text', serif;
   font-weight: 100;
-  line-height: 80%;
-  margin-bottom: 80px;
+  /* line-height: 80%; */
+  /* margin-bottom: 80px; */
   /* font-style: italic; */
   color: black;
 }
@@ -58,12 +87,11 @@ body {
 }
 
 #outfitBox {
-  /* border: solid 1px black; */
-  width: 60vw;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  flex-flow: row wrap;
+  align-items: start;
+  justify-content: center;
+  margin: 15px;
 }
 
 #outfit {
@@ -73,13 +101,15 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  margin: 20px;
+  box-shadow: 0px 0px 5px 5px #DCDCDC
 }
 
 .header{
   font-size: 50px;
-  font-family: Barlow;
   letter-spacing: 2px;
   text-align: center;
+  line-height: 80%;
 }
 .uploadForm {
   padding: 50px;
@@ -94,6 +124,19 @@ body {
   height: 30vh;
 }
 
+.allOutfitsForm {
+  margin-bottom: 10px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: solid 2px black;
+  border-radius: 10px;
+  height: 20vh;
+  width: 20vw;
+}
+
 .chooseFile {
   display: flex;
   align-items: center;
@@ -103,7 +146,6 @@ body {
   margin-bottom: 10px;
   padding: 10px;
   font-size: 25px;
-  font-family: Barlow;
   letter-spacing: 2px;
 }
 
@@ -121,19 +163,15 @@ body {
 .checkboxDiv {
   margin: 10px;
   font-size: 20px;
-  font-family: Barlow;
   letter-spacing: 2px;
-
 }
 
-.uploadButton {
+.outfitsButton {
   margin: 10px;
   height: 55px;
   width: 180px;
   padding: 10px;
-  text-transform: capitalize;
   font-size: 20px;
-  font-family: Barlow;
   letter-spacing: 2px;
   cursor: pointer; 
   border: 2px solid black;
@@ -142,7 +180,7 @@ body {
   background: black;
 }
 
-.uploadButton:hover{
+.outfitsButton:hover{
   font-style: italic;
   color: white;
   background: grey;
