@@ -12,6 +12,8 @@ const AllOutfits = ({ SSID }) => {
     formal: false,
     athleisure: false,
   });
+  const [randomOutift,setRandomOutfit] = useState()
+  const [allOutfits,setAllOutfits] = useState(true)
 
   useEffect(() => {
     // initial fetching of all outfit data
@@ -39,6 +41,12 @@ const AllOutfits = ({ SSID }) => {
   useEffect(() => {
     setOutfitsArray(data.map((outfit, index) => <Outfit key={outfit.index} outfitData={outfit} />));
   }, [data]);
+
+  const getRandomOutift = () => {
+    const copy = outfitsArray.slice()
+    setRandomOutfit(copy[Math.floor(Math.random() * copy.length)])
+    allOutfits ? setAllOutfits(false):setAllOutfits(true)
+  }
 
   // function to handle updating of checkboxes
   const handleCheckChange = (event) => {
@@ -147,7 +155,8 @@ const AllOutfits = ({ SSID }) => {
           </div>
           <button type="submit">Get Results</button>
       </form>
-      <div id="outfitBox">{outfitsArray}</div>
+      <div id="outfitBox">{allOutfits ? outfitsArray:randomOutift}</div>
+      <button onClick={getRandomOutift}>DONT KNOW WHAT TO WEAR CLICK HERE</button>
     </div>
   );
 };
