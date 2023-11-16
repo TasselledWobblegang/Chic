@@ -40,8 +40,8 @@ const Login = ({ setSSID }) => {
     return (
         <div id='inputBox'>
             <text id='chic'>CHIC</text>
-            <input id='input' placeholder='USERNAME'></input>
-            <input id='input' placeholder='PASSWORD'></input>
+            <input id='loginUsername'className='input' placeholder='USERNAME'></input>
+            <input id='loginPassword' className='input' placeholder='PASSWORD'></input>
             <button id='signupLoginButton' onClick={loginHandler}>LOGIN</button>
             <Link id='userLink' to='/signup'>
                 CLICK HERE TO SIGNUP
