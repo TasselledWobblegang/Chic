@@ -10,13 +10,15 @@ const Outfit = (props) => {
           <img src={'outfits/uploads/' + aws_image} style={{maxWidth:'300px'}}alt="outfitImage prop" />
         </div>
         <h3>{description}</h3>
+        {selectedCategories && 
         <div>
-          {selectedCategories.map((category, idx) => {
+          {selectedCategories.map((category, idx) => (
             <div key={idx}>
               {category}
             </div>
-          })}
+          ))}
         </div>
+      }
       </div>
   )
 }

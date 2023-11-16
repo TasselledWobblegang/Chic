@@ -5,7 +5,6 @@ import '../styles/style.css';
 const AllOutfits = ({ SSID }) => {
   const [data, setData] = useState();
   const [array, setArray] = useState();
-
   const [categories, setCategories] = useState({
     casual: false,
     smartCasual: false,  
@@ -13,6 +12,23 @@ const AllOutfits = ({ SSID }) => {
     formal: false,
     athleisure: false,
   });
+
+  // inital data
+  useEffect(() => {
+    fetch(`/outfits/alloutfits`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'Application/JSON',
+      },
+      body: JSON.stringify({
+        SSID: SSID,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setData(res)
+      })
+  }, []); 
 
   const handleCheckChange = (event) => {
     const { name, value, checked } = event.target;
@@ -27,8 +43,8 @@ const AllOutfits = ({ SSID }) => {
   .filter((key) => (categories[key] === true));
 
   const handleSubmit = (event) => {
-    event.preventDefault;
-    fetch(`/outfits/alloutfits`, {
+    event.preventDefault();
+    fetch(`/outfits/filteredoutfits`, {
       method: 'POST',
       headers: {
         'Content-type': 'Application/JSON',
@@ -50,14 +66,17 @@ const AllOutfits = ({ SSID }) => {
 
   useEffect(() => {
     // get the data from the server!
-    const array = data.map((outfit, index) => {
-    <Outfit key={index} outfitData={outfit} />
-    });
-    setArray(array);
-  }, [data])
+    if (data) {
+      const array = data.map((outfit, index) => (
+        <Outfit key={index} outfitData={outfit} />
+      ));
+      setArray(array);
+    }
+  }, [data]);
 
   return (
     <div className="outfitsContainer">
+      <h2>Categories</h2>
       <form onSubmit = {handleSubmit}>
           <div>
             <input 

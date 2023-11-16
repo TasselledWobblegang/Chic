@@ -25,31 +25,40 @@ router.get('/uploads/:key', (req, res) => {
 
 router.post('/alloutfits', async(req, res) => {
   const userid = req.body.SSID;
-  const catagories = req.body.catagories;
-  let query = 'SELECT aws_image, description FROM outfits WHERE user_id = $1';
-  if (catagories.includes(casual)){
-    query.concat(' casual = true')
-  }
-  if (catagories.includes(smartCasual)){
-    query.concat(' smart_casual = true')
-  }
-  if (catagories.includes(businessAttire)){
-    query.concat(' business_attire = true')
-  }
-  if (catagories.includes(formal)){
-    query.concat(' formal = true')
-  }
-  if (catagories.includes(athleisure)){
-    query.concat(' athleisure = true')
-  }
+  const query = 'SELECT aws_image, description FROM outfits WHERE user_id = $1';
   const result = await db.query(query, [userid])
   console.log('result from alloutfits in router', result)
+  res.status(200).json(result)
+})
+
+router.post('/filteredoutfits', async(req, res) => {
+  const userid = req.body.SSID;
+  const catagories = req.body.catagories;
+  let query = 'SELECT aws_image, description FROM outfits WHERE user_id = $1';
+  if (catagories.includes('casual')){
+    query = query.concat(' AND casual = true')
+  }
+  if (catagories.includes('smartCasual')){
+    query = query.concat(' AND smart_casual = true')
+  }
+  if (catagories.includes('businessAttire')){
+    query = query.concat(' AND business_attire = true')
+  }
+  if (catagories.includes('formal')){
+    query = query.concat(' AND formal = true')
+  }
+  if (catagories.includes('athleisure')){
+    query = query.concat(' AND athleisure = true')
+  }
+  const result = await db.query(query, [userid])
+  console.log('result from filteredoutfits in router', result)
   res.status(200).json(result)
 })
 
 // UPLOAD OUTFIT
 router.post('/upload', upload.single('image'), async (req, res) => {
   const file = req.file; // data of image file
+  let [casual, smart_casual, business_attire, formal, athleisure] = [req.body.casual, req.body.smartCasual, req.body.businessAttire, req.body.formal, req.body.athleisure];
   console.log('file info: ', file);
 
   // send image file from client to s3
@@ -65,11 +74,11 @@ router.post('/upload', upload.single('image'), async (req, res) => {
   console.log('THIS IS USER ID: ', SSID);
 
   // SAVE IN SQL
-  const values = [description, result.Key, SSID];
+  const values = [description, result.Key, SSID, casual, smart_casual, business_attire, formal, athleisure];
   let saveImageQuery =
-    'INSERT INTO outfits (description, aws_image, user_id) VALUES ($1, $2, $3)';
-
-  const resultQuery = await db.query(saveImageQuery, values);
+    'INSERT INTO outfits (description, aws_image, user_id, casual, smart_casual, business_attire, formal, athleisure) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
+  console.log(values)
+  // const resultQuery = await db.query(saveImageQuery, values);
 
   res.send({ imagePath: `outfits/uploads/${result.Key}`, description });
 });
