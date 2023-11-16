@@ -20,7 +20,7 @@
 }
 
 /* was login  */
-#input{
+.input{
     font-size: 30px;
     font-family: Barlow;
     letter-spacing: 2px;
@@ -31,7 +31,7 @@
     border: 2px solid black;
     border-radius: 10px;
 }
-
+ /* was LoginButton */
 #signupLoginButton{
     font-size: 20px;
     font-family: Barlow;

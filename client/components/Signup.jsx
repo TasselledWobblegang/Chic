@@ -13,8 +13,8 @@ const Signup= ({ setSSID }) => {
 
     let singupHandler = () => {
 
-        let username =  document.querySelector('#loginUsername').value;
-        let password = document.querySelector('#loginPassword').value;
+        let username =  document.querySelector('#signupUsername').value;
+        let password = document.querySelector('#signupPassword').value;
 
         const userInfo = {
             username: username,
@@ -45,8 +45,8 @@ return (
     <>
     <div id='inputBox'>
         <text id='chic'>CHIC</text>
-        <input id='input' placeholder='USERNAME'></input>
-        <input id='input' placeholder='PASSWORD'></input>
+        <input id='signupUsername' className='input' placeholder='USERNAME'></input>
+        <input id='signupPassword' className='input'placeholder='PASSWORD'></input>
         <button id='signupLoginButton' onClick= {singupHandler}>SIGN UP</button>
         <Link id='userLink' to='/login'>
             CLICK HERE TO LOGIN
