@@ -24,53 +24,53 @@ const UploadOutfit = ({ SSID }) => {
   const [imageDescription, setImageDescription] = useState('');
 
   // SEND IMAGE AS FORM DATA
-  async function postImage({ image, description, SSID, categories }) {
+  function postImage({ image, description, SSID, categories }) {
     if (image) {
-      try {
-        const formData = new FormData();
-        formData.append('image', image);
-        formData.append('description', description);
-        formData.append('SSID', SSID);
-        formData.append('casual', categories.casual);
-        formData.append('smartCasual', categories.smartCasual);
-        formData.append('businessAttire', categories.businessAttire);
-        formData.append('formal', categories.formal);
-        formData.append('athleisure', categories.athleisure);
-
-        const result = await axios.post('/outfits/upload', formData, {
-          headers: { 'Content-Type': 'multipart/form-data' },
+      const formData = new FormData();
+      formData.append('image', image);
+      formData.append('description', description);
+      formData.append('SSID', SSID);
+      formData.append('casual', categories.casual);
+      formData.append('smartCasual', categories.smartCasual);
+      formData.append('businessAttire', categories.businessAttire);
+      formData.append('formal', categories.formal);
+      formData.append('athleisure', categories.athleisure);
+  
+      return axios.post('/outfits/upload', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      })
+        .then((result) => result.data)
+        .catch((error) => {
+          console.error('Error posting image:', error);
+          throw error;
         });
-        return result.data;
-      } catch (error) {
-        console.log(error);
-      }
     }
-  }
+  }  
 
   // SELECT FILE HANDLER
   const fileSelected = (e) => {
     const file = e.target.files[0];
     setFile(file);
-    // const selectedFile = e.target.files && e.target.files[0];
-    // setFile(selectedFile || null);
   };
 
   // SUBMIT IMAGE BUTTON
-  const submitImage = async (e) => {
+  const submitImage = (e) => {
     e.preventDefault();
-    try {
-      const result = await postImage({ image: file, description, SSID, categories });
-      console.log('Result after submitting image: ', result);
   
-      if (result) {
-        setImages([result.image, ...images]);
-        setImagePath(result.imagePath);
-        setImageDescription(result.description);
-      }
-    } catch (error) {
-      console.error('Error submitting image:', error);
-    }
-  };
+    postImage({ image: file, description, SSID, categories })
+      .then((result) => {
+        console.log('Result after submitting image: ', result);
+  
+        if (result) {
+          setImages([result.image, ...images]);
+          setImagePath(result.imagePath);
+          setImageDescription(result.description);
+        }
+      })
+      .catch((error) => {
+        console.error('Error submitting image:', error);
+      });
+  };  
 
   // checkboxes!
   const handleCheckChange = (event) => {

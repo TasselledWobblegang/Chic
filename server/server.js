@@ -1,9 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 const PORT = 3000;
 
 const app = express(); //creates our server
 app.use(express.json()); //this parses incoming json request 
+app.use(cors());
 
 // ROUTERS
 const authRouter = require('./routes/auth.js');

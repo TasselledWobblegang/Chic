@@ -3,44 +3,52 @@ import Outfit from './Outfit.jsx';
 import '../styles/style.css';
 
 const AllOutfits = ({ SSID }) => {
-  const [data, setData] = useState();
-  const [array, setArray] = useState();
+  const [data, setData] = useState([]);
+  const [outfitsArray, setOutfitsArray] = useState([]);
   const [categories, setCategories] = useState({
     casual: false,
-    smartCasual: false,  
+    smartCasual: false,
     businessAttire: false,
     formal: false,
     athleisure: false,
   });
 
-  // inital data
   useEffect(() => {
-    fetch(`/outfits/alloutfits`, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'Application/JSON',
-      },
-      body: JSON.stringify({
-        SSID: SSID,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setData(res)
+    const fetchData = () => {
+      fetch(`/outfits/alloutfits`, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'Application/JSON',
+        },
+        body: JSON.stringify({
+          SSID: SSID,
+        }),
       })
-  }, []); 
+        .then((initialRes) => initialRes.json())
+        .then((initialData) => setData(initialData.rows))
+        .catch((error) => {
+          console.error('Error fetching initial data:', error);
+        });
+    };
+  
+    fetchData();
+  }, []);  
+
+  useEffect(() => {
+    setOutfitsArray(data.map((outfit, index) => <Outfit key={outfit.index} outfitData={outfit} />));
+  }, [data]);
 
   const handleCheckChange = (event) => {
     const { name, value, checked } = event.target;
     if (name === 'categories') {
-      setCategories(
-        {...categories, [value]:checked},
-      )
+      setCategories((prevCategories) => ({
+        ...prevCategories,
+        [value]: checked,
+      }));
     }
-  }
+  };
 
-  const selectedCategories = Object.keys(categories)
-  .filter((key) => (categories[key] === true));
+  const selectedCategories = Object.keys(categories).filter((key) => categories[key]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -50,29 +58,24 @@ const AllOutfits = ({ SSID }) => {
         'Content-type': 'Application/JSON',
       },
       body: JSON.stringify({
-        SSID: SSID, 
+        SSID: SSID,
         categories: selectedCategories,
       }),
     })
-      .then((res) => res.json())
       .then((res) => {
-        console.log('these are all filtered outfits from frontend', res.rows);
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.json();
+      })
+      .then((res) => {
+        console.log('Filtered outfits from frontend:', res.rows);
         setData(res.rows);
       })
       .catch((error) => {
-        console.log('an error occured while getting the outfits data');
-      })
+        console.log('An error occurred while getting the outfits data', error);
+      });
   };
-
-  useEffect(() => {
-    // get the data from the server!
-    if (data) {
-      const array = data.map((outfit, index) => (
-        <Outfit key={index} outfitData={outfit} />
-      ));
-      setArray(array);
-    }
-  }, [data]);
 
   return (
     <div className="outfitsContainer">
@@ -137,8 +140,9 @@ const AllOutfits = ({ SSID }) => {
             />
             <label htmlFor="athleisure">Athleisure</label>
           </div>
+          <button type="submit">Get Results</button>
       </form>
-      <div id="outfitBox">{array}</div>
+      <div id="outfitBox">{outfitsArray}</div>
     </div>
   );
 };
