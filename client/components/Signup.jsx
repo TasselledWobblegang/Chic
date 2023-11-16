@@ -13,8 +13,8 @@ const Signup= ({ setSSID }) => {
 
     let singupHandler = () => {
 
-        let username =  document.querySelector('#loginUsername').value;
-        let password = document.querySelector('#loginPassword').value;
+        let username =  document.querySelector('#signupUsername').value;
+        let password = document.querySelector('#signupPassword').value;
 
         const userInfo = {
             username: username,
@@ -43,13 +43,13 @@ const Signup= ({ setSSID }) => {
 
 return (
     <>
-    <div id='loginBox'>
-        <img id='logo' src='https://www.wrkmode.com/images/id/logo_chic.gif'></img>
-        <input id='loginUsername' placeholder='username'></input>
-        <input id='loginPassword' placeholder='password'></input>
-        <button id='loginButton' onClick= {singupHandler}>Sign Up</button>
-        <Link id='userLink' to='/login' style= {{margin : 10}}>
-            Click here to login
+    <div id='inputBox'>
+        <text id='chic'>CHIC</text>
+        <input id='signupUsername' className='input' placeholder='USERNAME'></input>
+        <input id='signupPassword' className='input'placeholder='PASSWORD'></input>
+        <button id='signupLoginButton' onClick= {singupHandler}>SIGN UP</button>
+        <Link id='userLink' to='/login'>
+            CLICK HERE TO LOGIN
         </Link>
     </div>
     </>

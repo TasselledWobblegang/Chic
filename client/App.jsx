@@ -12,20 +12,22 @@ const App = () => {
   console.log('this is SSID', SSID);
   return (
     <Router>
-      <Link to="/signup" style={{ margin: 10 }}>
-        Signup
-      </Link>
-      <Link to="/login" style={{ margin: 10 }}>
-        Login
-      </Link>
-      <Link to="/dashboard" style={{ margin: 10 }}>
-        Dashboard
-      </Link>
-      <Link to="/alloutfits" style={{ margin: 10 }}>
-        All Outfits
-      </Link>
+      <div id="tabs">
+        <Link to="/signup" id='link'>
+          SIGN UP
+        </Link>
+        <Link to="/login" id='link'>
+          LOG IN
+        </Link>
+        <Link to="/dashboard" id='link'>
+          DASHBOARD
+        </Link>
+        <Link to="/alloutfits" id='link'>
+          ALL OUTFITS
+        </Link>
+      </div>
       <Routes>
-      {/** Look into why they have the setSSID to SetSSID 
+        {/** Look into why they have the setSSID to SetSSID 
           Potentially is prop drilling this function down*/}
         <Route path="/" element={<Login setSSID={setSSID} />} />
         <Route path="/signup" element={<Signup setSSID={setSSID} />} />

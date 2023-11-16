@@ -92,32 +92,12 @@ const UploadOutfit = ({ SSID }) => {
           alignItems: 'center',
         }}
       >
-        <h1>Upload Outfit</h1>
+        <h1 className='header'>UPLOAD OUTFIT</h1>
 
         {/* FOR TESTING PURPOSES: UPLOADING AN IMAGE */}
-        <form
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: '30vw',
-            margin: 'auto',
-            alignItems: 'center',
-            justifyContent: 'space-evenly',
-            border: 'solid 2px black',
-            borderRadius: '10px',
-            height: '20vh',
-          }}
-          onSubmit={submitImage}
-        >
+        <form className='uploadForm' onSubmit={submitImage}>
           <input onChange={fileSelected} type="file" accept="image/*" />
-          <input
-            style={{
-              height: '35px',
-              width: '80%',
-              paddingLeft: '10px',
-              borderRadius: '10px',
-              border: 'none',
-            }}
+          <input className='uploadInput'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             type="text"
@@ -184,35 +164,16 @@ const UploadOutfit = ({ SSID }) => {
             <label htmlFor="athleisure">Athleisure</label>
           </div>
 
-          <input
-            style={{
-              height: '40px',
-              width: '200px',
-              borderRadius: '10px',
-              border: 'none',
-            }}
-            type="submit"
-            value={'Upload Image'}
+          <input className='uploadButton' type="submit" value={'Upload Image'}
           />
         </form>
 
         {imagePath && (
           <div
-            className="yourUpload"
-            style={{
-              border: 'solid 1px black',
-              padding: '10px',
-              marginTop: '20px',
-              width: '600px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
+            className='yourUpload'
           >
             <img
-              style={{ width: '300px', height: '300px' }}
-              src={imagePath}
-              alt="this was the uploaded picture"
+              className='uploadImg' src={imagePath} alt="this was the uploaded picture"
             />
             <p>{imageDescription}</p>
           </div>

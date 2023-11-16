@@ -1,16 +1,53 @@
-html {
-  background: rgb(224, 78, 0);
-}
+/* Barlow */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100&display=swap');
+/* DM Serif  */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap');
 
 #root {
-  margin: 0px;
-  background: rgb(224, 78, 0);
+  margin: 5px;
+  /* background: rgb(224, 78, 0); */
   text-decoration: none;
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  flex-direction: column;
+
 }
+
 body {
   margin: 0px;
+}
+
+#tabs {
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 30px;
+}
+
+#link {
+  font-size: 25px;
+  font-family: Barlow;
+  letter-spacing: 2px;
+  text-decoration: none;
+  /* removes underline */
+  color: black;
+}
+
+#link:hover {
+  font-style: italic;
+  font-weight: bold;
+}
+
+
+#chic {
+  font-size: 160px;
+  font-family: 'DM Serif Text', serif;
+  font-weight: 100;
+  line-height: 80%;
+  margin-bottom: 80px;
+  /* font-style: italic; */
+  color: black;
 }
 
 .outfitsContainer {
@@ -36,4 +73,52 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 10px;
+}
+
+.header{
+  font-size: 30px;
+  font-family: Barlow;
+  letter-spacing: 2px;
+  text-align: center;
+}
+.uploadForm {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  margin: auto;
+  align-items: center;
+  justify-content: space-evenly;
+  border: solid 2px black;
+  border-radius: 10px;
+  height: 20vh;
+}
+
+.uploadInput {
+  height: 35px;
+  width: 80%;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.uploadButton {
+  height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  border: none;
+}
+
+.yourUpload {
+  border: solid 1px black;
+  padding: 10px;
+  margin-top: 20px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.uploadImg {
+  width: 300px;
+  height: 300px;
 }
