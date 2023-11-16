@@ -15,7 +15,7 @@ const UploadOutfit = ({ SSID }) => {
   // checkboxes!
   const [categories, setCategories] = useState({
     casual: false,
-    smartCasual: false,  
+    smartCasual: false,
     businessAttire: false,
     formal: false,
     athleisure: false,
@@ -65,7 +65,7 @@ const UploadOutfit = ({ SSID }) => {
     const { name, value, checked } = event.target;
     if (name === 'categories') {
       setCategories(
-        {...categories, [value]:checked},
+        { ...categories, [value]: checked },
       )
     }
   }
@@ -80,127 +80,96 @@ const UploadOutfit = ({ SSID }) => {
           alignItems: 'center',
         }}
       >
-        <h1>Upload Outfit</h1>
+        <h1 className='header'>UPLOAD OUTFIT</h1>
 
         {/* FOR TESTING PURPOSES: UPLOADING AN IMAGE */}
-        <form
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: '30vw',
-            margin: 'auto',
-            alignItems: 'center',
-            justifyContent: 'space-evenly',
-            border: 'solid 2px black',
-            borderRadius: '10px',
-            height: '20vh',
-          }}
-          onSubmit={submitImage}
-        >
-          <input onChange={fileSelected} type="file" accept="image/*" />
-          <input
-            style={{
-              height: '35px',
-              width: '80%',
-              paddingLeft: '10px',
-              borderRadius: '10px',
-              border: 'none',
-            }}
+        <form className='uploadForm' onSubmit={submitImage}>
+          
+          <div className='chooseFile'>
+          <input  
+          onChange={fileSelected} 
+          type="file" accept="image/*" />
+          </div>
+          <input className='uploadInput'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             type="text"
             placeholder="description..."
           />
+         
 
-          <div>
-            <input 
-              type="checkbox"
-              id="casual"
-              value="casual"
-              name="categories"
-              checked={categories.casual}
-              onChange={handleCheckChange}
-            />
-            <label htmlFor="casual">Casual</label>
+          <div className='checkboxDiv'>
+            <div>
+              <input
+                type="checkbox"
+                id="casual"
+                value="casual"
+                name="categories"
+                checked={categories.casual}
+                onChange={handleCheckChange}
+              />
+              <label htmlFor="casual">Casual</label>
+            </div>
+
+            <div >
+              <input
+                type="checkbox"
+                id="smartCasual"
+                value="smartCasual"
+                name="categories"
+                checked={categories.smartCasual}
+                onChange={handleCheckChange}
+              />
+              <label htmlFor="smartCasual">Smart Casual</label>
+            </div>
+
+            <div>
+              <input
+                type="checkbox"
+                id="businessAttire"
+                value="businessAttire"
+                name="categories"
+                checked={categories.businessAttire}
+                onChange={handleCheckChange}
+              />
+              <label htmlFor="businessAttire">Business Attire</label>
+            </div>
+
+            <div>
+              <input
+                type="checkbox"
+                id="formal"
+                value="formal"
+                name="categories"
+                checked={categories.formal}
+                onChange={handleCheckChange}
+              />
+              <label htmlFor="formal">Formal</label>
+            </div>
+
+            <div>
+              <input
+                type="checkbox"
+                id="athleisure"
+                value="athleisure"
+                name="categories"
+                checked={categories.athleisure}
+                onChange={handleCheckChange}
+              />
+              <label htmlFor="athleisure">Athleisure</label>
+            </div>
           </div>
 
-          <div>
-            <input 
-              type="checkbox"
-              id="smartCasual"
-              value="smartCasual"
-              name="categories"
-              checked={categories.smartCasual}
-              onChange={handleCheckChange}
-            />
-            <label htmlFor="smartCasual">Smart Casual</label>
-          </div>
-
-          <div>
-            <input 
-              type="checkbox"
-              id="businessAttire"
-              value="businessAttire"
-              name="categories"
-              checked={categories.businessAttire}
-              onChange={handleCheckChange}
-            />
-            <label htmlFor="businessAttire">Business Attire</label>
-          </div>
-
-          <div>
-            <input 
-              type="checkbox"
-              id="formal"
-              value="formal"
-              name="categories"
-              checked={categories.formal}
-              onChange={handleCheckChange}
-            />
-            <label htmlFor="formal">Formal</label>
-          </div>
-
-          <div>
-            <input 
-              type="checkbox"
-              id="athleisure"
-              value="athleisure"
-              name="categories"
-              checked={categories.athleisure}
-              onChange={handleCheckChange}
-            />
-            <label htmlFor="athleisure">Athleisure</label>
-          </div>
-
-          <input
-            style={{
-              height: '40px',
-              width: '200px',
-              borderRadius: '10px',
-              border: 'none',
-            }}
-            type="submit"
-            value={'Upload Image'}
+          <input className='uploadButton' type="submit" value={'UPLOAD IMAGE'}
           />
         </form>
 
         {imagePath && (
           <div
-            className="yourUpload"
-            style={{
-              border: 'solid 1px black',
-              padding: '10px',
-              marginTop: '20px',
-              width: '600px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
+            className='yourUpload'
           >
             <img
-              style={{ width: '300px', height: '300px' }}
-              src={imagePath}
-              alt="this was the uploaded picture"
+              className='uploadImg' src={imagePath} alt="this was the uploaded picture"
             />
             <p>{imageDescription}</p>
           </div>
