@@ -14,6 +14,7 @@ const AllOutfits = ({ SSID }) => {
   });
 
   useEffect(() => {
+    // initial fetching of all outfit data
     const fetchData = () => {
       fetch(`/outfits/alloutfits`, {
         method: 'POST',
@@ -34,10 +35,12 @@ const AllOutfits = ({ SSID }) => {
     fetchData();
   }, []);  
 
+  // update array that stores outfit data when data changes 
   useEffect(() => {
     setOutfitsArray(data.map((outfit, index) => <Outfit key={outfit.index} outfitData={outfit} />));
   }, [data]);
 
+  // function to handle updating of checkboxes
   const handleCheckChange = (event) => {
     const { name, value, checked } = event.target;
     if (name === 'categories') {
@@ -48,8 +51,10 @@ const AllOutfits = ({ SSID }) => {
     }
   };
 
+  // filter the keys of the categories so we only send the selected categories
   const selectedCategories = Object.keys(categories).filter((key) => categories[key]);
 
+  // function to handle the filtered outfit form submission
   const handleSubmit = (event) => {
     event.preventDefault();
     fetch(`/outfits/filteredoutfits`, {
