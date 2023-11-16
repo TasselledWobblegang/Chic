@@ -8,4 +8,5 @@ const Dashboard = ({ SSID }) => {
     </div>
   );
 };
+
 export default Dashboard;

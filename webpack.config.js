@@ -41,7 +41,11 @@ module.exports = {
       directory: path.resolve(__dirname),
     },
     proxy: {
-      '/**' : "http://localhost:3000"
+      '/**' : "http://localhost:3000",
+      "/outfits": {
+        "target": "http://localhost:3000",
+        "secure": false
+      },
       },
   },
   plugins: [new HtmlWebpackPlugin()],

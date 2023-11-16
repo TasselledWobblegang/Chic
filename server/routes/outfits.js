@@ -31,9 +31,34 @@ router.post('/alloutfits', async(req, res) => {
   res.status(200).json(result)
 })
 
+router.post('/filteredoutfits', async (req, res) => {
+  const userid = req.body.SSID;
+  const categories = req.body.categories; 
+  let query = 'SELECT aws_image, description, casual, smart_casual, business_attire, formal, athleisure FROM outfits WHERE user_id = $1';
+  if (categories.includes('casual')) {
+    query = query.concat(' AND casual = true');
+  }
+  if (categories.includes('smartCasual')) {
+    query = query.concat(' AND smart_casual = true');
+  }
+  if (categories.includes('businessAttire')) {
+    query = query.concat(' AND business_attire = true');
+  }
+  if (categories.includes('formal')) {
+    query = query.concat(' AND formal = true');
+  }
+  if (categories.includes('athleisure')) {
+    query = query.concat(' AND athleisure = true');
+  }
+  const result = await db.query(query, [userid]);
+  console.log('result from filteredoutfits in router', result);
+  res.status(200).json(result);
+});
+
 // UPLOAD OUTFIT
 router.post('/upload', upload.single('image'), async (req, res) => {
   const file = req.file; // data of image file
+  let [casual, smart_casual, business_attire, formal, athleisure] = [req.body.casual, req.body.smartCasual, req.body.businessAttire, req.body.formal, req.body.athleisure];
   console.log('file info: ', file);
 
   // send image file from client to s3
@@ -42,7 +67,6 @@ router.post('/upload', upload.single('image'), async (req, res) => {
   await unlinkFile(file.path);
 
   // We get an object with a property Location whick is a link, that we can use as the src to render the image to the client
-
   const description = req.body.description; // description data of form input
   console.log('image description: ', description);
 
@@ -50,9 +74,11 @@ router.post('/upload', upload.single('image'), async (req, res) => {
   console.log('THIS IS USER ID: ', SSID);
 
   // SAVE IN SQL
-  const values = [description, result.Key, SSID];
+  const values = [description, result.Key, SSID, casual, smart_casual, business_attire, formal, athleisure];
+  
   let saveImageQuery =
-    'INSERT INTO outfits (description, aws_image, user_id) VALUES ($1, $2, $3)';
+    'INSERT INTO outfits (description, aws_image, user_id, casual, smart_casual, business_attire, formal, athleisure) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
+  console.log(values)
 
   const resultQuery = await db.query(saveImageQuery, values);
 
