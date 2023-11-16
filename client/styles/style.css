@@ -76,21 +76,35 @@ body {
 }
 
 .header{
-  font-size: 30px;
+  font-size: 50px;
   font-family: Barlow;
   letter-spacing: 2px;
   text-align: center;
 }
 .uploadForm {
+  padding: 50px;
   display: flex;
   flex-direction: column;
   width: 30vw;
-  margin: auto;
+  margin: 10px;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   border: solid 2px black;
   border-radius: 10px;
-  height: 20vh;
+  height: 30vh;
+}
+
+.chooseFile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 2px black;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 25px;
+  font-family: Barlow;
+  letter-spacing: 2px;
 }
 
 .uploadInput {
@@ -99,13 +113,40 @@ body {
   padding-left: 10px;
   border-radius: 10px;
   border: none;
+  margin: 10px;
+  padding: 20px;
+  border: solid 2px black; 
+}
+
+.checkboxDiv {
+  margin: 10px;
+  font-size: 20px;
+  font-family: Barlow;
+  letter-spacing: 2px;
+
 }
 
 .uploadButton {
-  height: 40px;
-  width: 200px;
+  margin: 10px;
+  height: 55px;
+  width: 180px;
+  padding: 10px;
+  text-transform: capitalize;
+  font-size: 20px;
+  font-family: Barlow;
+  letter-spacing: 2px;
+  cursor: pointer; 
+  border: 2px solid black;
   border-radius: 10px;
-  border: none;
+  color: white;
+  background: black;
+}
+
+.uploadButton:hover{
+  font-style: italic;
+  color: white;
+  background: grey;
+  border: 2px solid grey;
 }
 
 .yourUpload {
@@ -121,4 +162,5 @@ body {
 .uploadImg {
   width: 300px;
   height: 300px;
+
 }
