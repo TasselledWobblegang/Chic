@@ -15,7 +15,7 @@ const UploadOutfit = ({ SSID }) => {
   // checkboxes!
   const [categories, setCategories] = useState({
     casual: false,
-    smartCasual: false,  
+    smartCasual: false,
     businessAttire: false,
     formal: false,
     athleisure: false,
@@ -65,7 +65,7 @@ const UploadOutfit = ({ SSID }) => {
     const { name, value, checked } = event.target;
     if (name === 'categories') {
       setCategories(
-        {...categories, [value]:checked},
+        { ...categories, [value]: checked },
       )
     }
   }
@@ -84,75 +84,83 @@ const UploadOutfit = ({ SSID }) => {
 
         {/* FOR TESTING PURPOSES: UPLOADING AN IMAGE */}
         <form className='uploadForm' onSubmit={submitImage}>
-          <input onChange={fileSelected} type="file" accept="image/*" />
+          
+          <div className='chooseFile'>
+          <input  
+          onChange={fileSelected} 
+          type="file" accept="image/*" />
+          </div>
           <input className='uploadInput'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             type="text"
             placeholder="description..."
           />
+         
 
-          <div>
-            <input 
-              type="checkbox"
-              id="casual"
-              value="casual"
-              name="categories"
-              checked={categories.casual}
-              onChange={handleCheckChange}
-            />
-            <label htmlFor="casual">Casual</label>
+          <div className='checkboxDiv'>
+            <div>
+              <input
+                type="checkbox"
+                id="casual"
+                value="casual"
+                name="categories"
+                checked={categories.casual}
+                onChange={handleCheckChange}
+              />
+              <label htmlFor="casual">Casual</label>
+            </div>
+
+            <div >
+              <input
+                type="checkbox"
+                id="smartCasual"
+                value="smartCasual"
+                name="categories"
+                checked={categories.smartCasual}
+                onChange={handleCheckChange}
+              />
+              <label htmlFor="smartCasual">Smart Casual</label>
+            </div>
+
+            <div>
+              <input
+                type="checkbox"
+                id="businessAttire"
+                value="businessAttire"
+                name="categories"
+                checked={categories.businessAttire}
+                onChange={handleCheckChange}
+              />
+              <label htmlFor="businessAttire">Business Attire</label>
+            </div>
+
+            <div>
+              <input
+                type="checkbox"
+                id="formal"
+                value="formal"
+                name="categories"
+                checked={categories.formal}
+                onChange={handleCheckChange}
+              />
+              <label htmlFor="formal">Formal</label>
+            </div>
+
+            <div>
+              <input
+                type="checkbox"
+                id="athleisure"
+                value="athleisure"
+                name="categories"
+                checked={categories.athleisure}
+                onChange={handleCheckChange}
+              />
+              <label htmlFor="athleisure">Athleisure</label>
+            </div>
           </div>
 
-          <div>
-            <input 
-              type="checkbox"
-              id="smartCasual"
-              value="smartCasual"
-              name="categories"
-              checked={categories.smartCasual}
-              onChange={handleCheckChange}
-            />
-            <label htmlFor="smartCasual">Smart Casual</label>
-          </div>
-
-          <div>
-            <input 
-              type="checkbox"
-              id="businessAttire"
-              value="businessAttire"
-              name="categories"
-              checked={categories.businessAttire}
-              onChange={handleCheckChange}
-            />
-            <label htmlFor="businessAttire">Business Attire</label>
-          </div>
-
-          <div>
-            <input 
-              type="checkbox"
-              id="formal"
-              value="formal"
-              name="categories"
-              checked={categories.formal}
-              onChange={handleCheckChange}
-            />
-            <label htmlFor="formal">Formal</label>
-          </div>
-
-          <div>
-            <input 
-              type="checkbox"
-              id="athleisure"
-              value="athleisure"
-              name="categories"
-              checked={categories.athleisure}
-              onChange={handleCheckChange}
-            />
-            <label htmlFor="athleisure">Athleisure</label>
-          </div>
-
-          <input className='uploadButton' type="submit" value={'Upload Image'}
+          <input className='uploadButton' type="submit" value={'UPLOAD IMAGE'}
           />
         </form>
 
