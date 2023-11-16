@@ -1,66 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100&display=swap');
+
 #login{
     display: flex;
     justify-content: center;
 }
 
-#loginBox{
-    margin : auto;
+/* was loginBox */
+#inputBox{
     text-align: center;
-    height: 100vh;
-    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-style: solid;
-    background: black
-}
-
-#loginPassword{
-    padding-left: 10px;
+    padding: 10px;
     margin: 10px;
-    border: none;
-    height: 5vh;
-    width: 25vw;
-    background: rgb(0, 224, 213);
-    border-radius: 5px;
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 90vh;
 }
 
-#loginUsername{
-    padding-left: 10px;
+/* was login  */
+.input{
+    font-size: 30px;
+    font-family: Barlow;
+    letter-spacing: 2px;
+    text-align: center;
     margin: 10px;
-    border: none;
-    height: 5vh;
-    width: 25vw;
-    background: rgb(0, 224, 213);
-    border-radius: 5px;
+    height: 50px;
+    width: 330px;
+    border: 2px solid black;
+    border-radius: 10px;
 }
-
-#loginButton{
+ /* was LoginButton */
+#signupLoginButton{
+    font-size: 20px;
+    font-family: Barlow;
+    letter-spacing: 2px;
+    margin-top: 60px;
+    margin-bottom: 10px;
+    height: 55px;
+    width: 180px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer; 
+    border: 2px solid black;
+    border-radius: 10px;
+    color: white;
+    background: black;
+}
+#signupLoginButton:hover{
+    font-style: italic;
+    color: white;
+    background: grey;
+    border: 2px solid grey;
+}
+#userLink {
+    font-size: 20px;
+    font-family: Barlow;
+    letter-spacing: 2px;
     margin: 10px;
-    height: 5vh;
-    width: 25vw;
-    background: rgb(224, 78, 0);
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-
-    
-}
-#loginButton:hover{
-    background:rgba(224, 78, 0, 0.857)
-}
-#signupLink {
-    color: rgb(0, 224, 213);
+    color: grey;
     text-decoration: none;
+
 }
-#signupLink:hover{
-    color:rgba(0, 157, 224, 0.777);
+#userLink:hover{
+    font-style: italic;
+    color: black;
 }
 
 
-#logo{
-    height: 40%;
-    width: 40%;
 
-}
