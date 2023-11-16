@@ -9,6 +9,7 @@ import styles from './styles/style.css';
 
 
 const root = createRoot(document.querySelector('#root'));
+
 root.render(
   <React.StrictMode>
       <App/>
